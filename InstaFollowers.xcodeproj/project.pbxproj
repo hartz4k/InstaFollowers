@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		0412A3AF205ACD6F00C1B14F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412A3AE205ACD6F00C1B14F /* Constant.swift */; };
 		0412A3B1205ADF4F00C1B14F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412A3B0205ADF4E00C1B14F /* Extension.swift */; };
+		042A81E62073F73B00DAC9C2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81D62073F73B00DAC9C2 /* FMDatabase.m */; };
+		042A81E72073F73B00DAC9C2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81D82073F73B00DAC9C2 /* FMDatabaseAdditions.m */; };
+		042A81E82073F73B00DAC9C2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81DA2073F73B00DAC9C2 /* FMDatabasePool.m */; };
+		042A81E92073F73B00DAC9C2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81DC2073F73B00DAC9C2 /* FMDatabaseQueue.m */; };
+		042A81EA2073F73B00DAC9C2 /* fmdb.txt in Resources */ = {isa = PBXBuildFile; fileRef = 042A81DE2073F73B00DAC9C2 /* fmdb.txt */; };
+		042A81EB2073F73B00DAC9C2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81E02073F73B00DAC9C2 /* FMResultSet.m */; };
+		042A81EC2073F73B00DAC9C2 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A81E32073F73B00DAC9C2 /* ModelManager.swift */; };
+		042A81EE2073F73B00DAC9C2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A81E52073F73B00DAC9C2 /* Util.swift */; };
+		042A81F02073F77600DAC9C2 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 042A81EF2073F77600DAC9C2 /* libsqlite3.0.tbd */; };
+		042A81F22074756A00DAC9C2 /* InstaFollowers.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 042A81F12074756A00DAC9C2 /* InstaFollowers.sqlite */; };
+		043D27FA207540DF00170F5E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 043D27F9207540DF00170F5E /* libsqlite3.tbd */; };
 		04BCB955205A1CEF00760B20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BCB954205A1CEF00760B20 /* AppDelegate.swift */; };
 		04BCB957205A1CEF00760B20 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BCB956205A1CEF00760B20 /* DashboardVC.swift */; };
 		04BCB95A205A1CEF00760B20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04BCB958205A1CEF00760B20 /* Main.storyboard */; };
@@ -52,6 +63,24 @@
 /* Begin PBXFileReference section */
 		0412A3AE205ACD6F00C1B14F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0412A3B0205ADF4E00C1B14F /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		042A81D52073F73B00DAC9C2 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		042A81D62073F73B00DAC9C2 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		042A81D72073F73B00DAC9C2 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		042A81D82073F73B00DAC9C2 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		042A81D92073F73B00DAC9C2 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		042A81DA2073F73B00DAC9C2 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		042A81DB2073F73B00DAC9C2 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		042A81DC2073F73B00DAC9C2 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		042A81DD2073F73B00DAC9C2 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		042A81DE2073F73B00DAC9C2 /* fmdb.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fmdb.txt; sourceTree = "<group>"; };
+		042A81DF2073F73B00DAC9C2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		042A81E02073F73B00DAC9C2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		042A81E22073F73B00DAC9C2 /* InstaFollowers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InstaFollowers-Bridging-Header.h"; sourceTree = "<group>"; };
+		042A81E32073F73B00DAC9C2 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		042A81E52073F73B00DAC9C2 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		042A81EF2073F77600DAC9C2 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		042A81F12074756A00DAC9C2 /* InstaFollowers.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = InstaFollowers.sqlite; sourceTree = "<group>"; };
+		043D27F9207540DF00170F5E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		04BCB951205A1CEF00760B20 /* InstaFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BCB954205A1CEF00760B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BCB956205A1CEF00760B20 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
@@ -92,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043D27FA207540DF00170F5E /* libsqlite3.tbd in Frameworks */,
+				042A81F02073F77600DAC9C2 /* libsqlite3.0.tbd in Frameworks */,
 				3BFDB397949736CD960F0E13 /* Pods_InstaFollowers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +155,43 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		042A81D32073F73B00DAC9C2 /* FMDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				042A81D42073F73B00DAC9C2 /* FMDB */,
+				042A81E12073F73B00DAC9C2 /* Model */,
+			);
+			path = FMDatabase;
+			sourceTree = "<group>";
+		};
+		042A81D42073F73B00DAC9C2 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				042A81D52073F73B00DAC9C2 /* FMDatabase.h */,
+				042A81D62073F73B00DAC9C2 /* FMDatabase.m */,
+				042A81D72073F73B00DAC9C2 /* FMDatabaseAdditions.h */,
+				042A81D82073F73B00DAC9C2 /* FMDatabaseAdditions.m */,
+				042A81D92073F73B00DAC9C2 /* FMDatabasePool.h */,
+				042A81DA2073F73B00DAC9C2 /* FMDatabasePool.m */,
+				042A81DB2073F73B00DAC9C2 /* FMDatabaseQueue.h */,
+				042A81DC2073F73B00DAC9C2 /* FMDatabaseQueue.m */,
+				042A81DD2073F73B00DAC9C2 /* FMDB.h */,
+				042A81DE2073F73B00DAC9C2 /* fmdb.txt */,
+				042A81DF2073F73B00DAC9C2 /* FMResultSet.h */,
+				042A81E02073F73B00DAC9C2 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		042A81E12073F73B00DAC9C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				042A81E32073F73B00DAC9C2 /* ModelManager.swift */,
+				042A81E52073F73B00DAC9C2 /* Util.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		04BCB948205A1CEF00760B20 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +217,8 @@
 		04BCB953205A1CEF00760B20 /* InstaFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				042A81E22073F73B00DAC9C2 /* InstaFollowers-Bridging-Header.h */,
+				042A81F12074756A00DAC9C2 /* InstaFollowers.sqlite */,
 				04F711C9206D556B00503C82 /* Model */,
 				04F711C2206D548600503C82 /* Network */,
 				04F711BF206D545B00503C82 /* Libraries */,
@@ -183,6 +253,7 @@
 		04F711BF206D545B00503C82 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				042A81D32073F73B00DAC9C2 /* FMDatabase */,
 				04F711C0206D547B00503C82 /* Rechability.swift */,
 			);
 			path = Libraries;
@@ -232,6 +303,8 @@
 		7A0B33A23ACCAEA05ED2E211 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				043D27F9207540DF00170F5E /* libsqlite3.tbd */,
+				042A81EF2073F77600DAC9C2 /* libsqlite3.0.tbd */,
 				F1928CA73A6278BE28097513 /* Pods_InstaFollowers.framework */,
 				BFE1D252F48D2C052AA9561B /* Pods_InstaFollowersTests.framework */,
 				4C2ABC1C4A0363552E983E26 /* Pods_InstaFollowersUITests.framework */,
@@ -371,6 +444,8 @@
 				04BCB95F205A1CEF00760B20 /* LaunchScreen.storyboard in Resources */,
 				04BCB95C205A1CEF00760B20 /* Assets.xcassets in Resources */,
 				04BCB95A205A1CEF00760B20 /* Main.storyboard in Resources */,
+				042A81F22074756A00DAC9C2 /* InstaFollowers.sqlite in Resources */,
+				042A81EA2073F73B00DAC9C2 /* fmdb.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,17 +630,24 @@
 				04F96261205E861B00004CFC /* SettingVC.swift in Sources */,
 				04FDBA00206D5AC000DD8966 /* PSViewController.swift in Sources */,
 				04BCB955205A1CEF00760B20 /* AppDelegate.swift in Sources */,
+				042A81E72073F73B00DAC9C2 /* FMDatabaseAdditions.m in Sources */,
 				0412A3AF205ACD6F00C1B14F /* Constant.swift in Sources */,
 				04F711C8206D549500503C82 /* Router.swift in Sources */,
 				04F9625F205E7C4000004CFC /* VideoLikesVC.swift in Sources */,
 				04FDB9FC206D55C200DD8966 /* PSText.swift in Sources */,
+				042A81E92073F73B00DAC9C2 /* FMDatabaseQueue.m in Sources */,
 				04F9625D205E2D2100004CFC /* ImageLikesVC.swift in Sources */,
 				04FDB9FD206D55C200DD8966 /* PSUtil.swift in Sources */,
 				04F711C1206D547C00503C82 /* Rechability.swift in Sources */,
 				0412A3B1205ADF4F00C1B14F /* Extension.swift in Sources */,
+				042A81EE2073F73B00DAC9C2 /* Util.swift in Sources */,
+				042A81EB2073F73B00DAC9C2 /* FMResultSet.m in Sources */,
+				042A81E82073F73B00DAC9C2 /* FMDatabasePool.m in Sources */,
 				04F711C7206D549500503C82 /* PSWebService.swift in Sources */,
+				042A81EC2073F73B00DAC9C2 /* ModelManager.swift in Sources */,
 				04F96259205D5CCF00004CFC /* LoginVC.swift in Sources */,
 				04F711C6206D549500503C82 /* PSWebSevice+User.swift in Sources */,
+				042A81E62073F73B00DAC9C2 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +823,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5f3829f2-b293-4ddf-8aba-48b30d7b55d2";
 				PROVISIONING_PROFILE_SPECIFIER = Insta_Followers_Development;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mac/Documents/Gitlab Project/InstaFollowers/InstaFollowers/InstaFollowers-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -760,6 +843,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1c7b5fe2-ab49-4e67-84a2-f640d24bb15f";
 				PROVISIONING_PROFILE_SPECIFIER = Insta_Foll0wers_Distribution;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mac/Documents/Gitlab Project/InstaFollowers/InstaFollowers/InstaFollowers-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

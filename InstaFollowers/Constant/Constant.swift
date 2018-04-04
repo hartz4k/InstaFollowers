@@ -28,6 +28,11 @@ let LOGIN_BUTTON_COLOR = UIColor(displayP3Red: 233.0/255.0, green: 30.0/255.0, b
 
 let TABLEVIEW_CELL_BG_COLOR = UIColor(displayP3Red: 253.0/255.0, green: 232.0/255.0, blue: 241.0/255.0, alpha: 1)
 
+struct const {
+    static func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
+}
 
 struct INSTAGRAM_IDS{
     static let INSTAGRAM_AUTHURL = "https://api.instagram.com/oauth/authorize/"

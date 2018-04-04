@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Util.copyFile("InstaFollowers.sqlite")
+        print(sqlite3_threadsafe())
+        
+        
+        if const.isKeyPresentInUserDefaults(key: "authToken") {
+            self.getUserDetails()
+        }
+        
         return true
+    }
+    //MARK: Get User Details
+    func getUserDetails() {
+        SVProgressHUD.show()
+        guard PSUtil.reachable() else
+        {
+            SVProgressHUD.dismiss()
+            //PSViewController.showAlertWithMessage(message: PSText.Key.NoIneternet)
+            return
+        }
+        
+        PSWebServiceAPI.GetUserDetailAPI { (response) in
+            print(response)
+            SVProgressHUD.dismiss()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier :"DashboardVC") as! DashboardVC
+            viewController.userDict = response
+            let navController = UINavigationController.init(rootViewController: viewController)
+            navController.navigationBar.isHidden = true
+            self.window?.rootViewController = navController
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

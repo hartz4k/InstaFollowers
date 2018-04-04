@@ -17,7 +17,10 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
     var countArray : NSArray!
     var payAmountArray : NSArray!
     var userDict = [String:AnyObject]()
+    var userMediaArray = [[String:AnyObject]]()
+    var userVideoArray = [[String:AnyObject]]()
     var userPhotosArray = [[String:AnyObject]]()
+    var callAPIBoolen : Bool = false
     
     //MARK:- IBOutlet
     //MARK:-
@@ -88,10 +91,6 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         collectionViewForViews.reloadData()
     }
     
-    func callAPIForGetUserDetail() {
-        
-    }
-    
     //MARK:- Collectionview Delegate
     //MARK:-
     
@@ -100,7 +99,7 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         if collectionView == collectionViewForLikes {
             return userPhotosArray.count
         }else{
-            return 100
+            return userVideoArray.count
         }
     }
     
@@ -113,6 +112,8 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
             return cell
         }else{
             let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "videoCell", for: indexPath) as! instagramVideoCell
+            cell.userImg.sd_setImage(with: URL(string: ((userVideoArray[indexPath.row]["images"] as! [String:AnyObject])["thumbnail"] as! [String:AnyObject])["url"] as! String), placeholderImage: #imageLiteral(resourceName: "icon-followers"))
+            cell.lblLike.text = String(describing: (userVideoArray[indexPath.row]["likes"] as! [String:AnyObject])["count"]!)
             return cell
         }
         
@@ -137,9 +138,11 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == collectionViewForLikes {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ImageLikesVC") as! ImageLikesVC
+            vc.imageDict = userPhotosArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "VideoLikesVC") as! VideoLikesVC
+            vc.videoDict = userVideoArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -183,7 +186,11 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         imgViews.image = #imageLiteral(resourceName: "icon-views")
         imgFollowers.image = #imageLiteral(resourceName: "icon-followers")
         self.scrollView.setContentOffset(CGPoint(x: (UIScreen.main.bounds.size.width * 1), y: 0), animated: true)
-        self.getUserPhotos()
+        
+        if !callAPIBoolen {
+            callAPIBoolen = true
+            self.getUserPhotos()
+        }
     }
     
     @IBAction func btnViewsAction(_ sender: Any) {
@@ -191,6 +198,7 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         imgFollowers.image = #imageLiteral(resourceName: "icon-followers")
         imgLikes.image = #imageLiteral(resourceName: "icon-likes")
         self.scrollView.setContentOffset(CGPoint(x: (UIScreen.main.bounds.size.width * 2), y: 0), animated: true)
+        self.collectionViewForViews.reloadData()
     }
     
     @IBAction func btnBuyAction(_ sender: Any){
@@ -220,11 +228,21 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         
         PSWebServiceAPI.GetUserPhotosAPI { (response) in
             print(response)
-            self.userPhotosArray = response["data"] as! [[String : AnyObject]]
-            print(self.userPhotosArray)
+            self.userMediaArray = response["data"] as! [[String : AnyObject]]
+            print(self.userMediaArray)
             
-            if self.userPhotosArray.count != 0 {
+            if self.userMediaArray.count != 0 {
+                
+                for i in 0..<self.userMediaArray.count {
+                    if self.userMediaArray[i]["type"] as! String == "video" {
+                        self.userVideoArray.append(self.userMediaArray[i])
+                    }else{
+                        self.userPhotosArray.append(self.userMediaArray[i])
+                    }
+                }
+                
                 self.collectionViewForLikes.reloadData()
+                
             }
             
         }

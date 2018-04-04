@@ -60,6 +60,11 @@ class LoginVC: PSViewController,UIWebViewDelegate {
         let user_id = authToken.split(separator: ".")[0]
         defaults.set(user_id, forKey: "user_id")
         print("User ID ==", user_id)
+        var dict = [String:AnyObject]()
+        dict["userId"] = Int(user_id) as AnyObject
+        dict["accessToken"] = authToken as AnyObject
+        dict["active"] = 1 as AnyObject
+        
         
         getUserDetails(access_token: authToken)
     }
@@ -76,9 +81,16 @@ class LoginVC: PSViewController,UIWebViewDelegate {
             return
         }
         
-        let parameter = ["access_token":access_token] as [String : Any]
         PSWebServiceAPI.GetUserDetailAPI { (response) in
             print(response)
+            var dict = [String:AnyObject]()
+            dict["userId"] = Int(String(describing: defaults.object(forKey: "user_id")!)) as AnyObject
+            dict["accessToken"] = String(describing: defaults.object(forKey: "authToken")!) as AnyObject
+            dict["userName"] = response["data"]?["username"] as AnyObject
+            dict["active"] = 1 as AnyObject
+            
+            let inserted = ModelManager.instance.Insert_UserDetail(dict)
+            print(inserted)
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
             vc.userDict = response
             self.navigationController?.pushViewController(vc, animated: true)

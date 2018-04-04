@@ -14,12 +14,15 @@ class VideoLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //MARK:-
     var countArray : NSArray!
     var payAmountArray : NSArray!
+    var videoDict = [String:AnyObject]()
     
     //MARK:- IBOutlet
     //MARK:-
     @IBOutlet var tblForVideoLikes: UITableView!
     @IBOutlet weak var headerVideoLikeHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewAlertForBuy: UIView!
+    @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var lblLikes: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,9 @@ class VideoLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }else{
             headerVideoLikeHeightConstraint.constant = 64
         }
+        
+        imgUser.sd_setImage(with: URL(string: ((videoDict["images"] as! [String:AnyObject])["thumbnail"] as! [String:AnyObject])["url"] as! String), placeholderImage: #imageLiteral(resourceName: "icon-followers"))
+        lblLikes.text = String(describing: "You only have \((videoDict["likes"] as! [String:AnyObject])["count"]!) likes")
         
         countArray = ["25","50","100","250","500","1000","2000"]
         payAmountArray = ["$ 1.39","$ 2.99","$ 5.99","$ 8.99","$ 9.99","12.99","$ 16.99"]

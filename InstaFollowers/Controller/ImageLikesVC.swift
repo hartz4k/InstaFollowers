@@ -14,12 +14,15 @@ class ImageLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //MARK:-
     var countArray : NSArray!
     var payAmountArray : NSArray!
+    var imageDict = [String:AnyObject]()
     
     //MARK:- IBOutlet
     //MARK:-
     @IBOutlet var tblForImageLikes: UITableView!
     @IBOutlet weak var headerImagesLikeHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewAlertForBuy: UIView!
+    @IBOutlet weak var imgUser: UIImageView!
+    @IBOutlet weak var lblLikes: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,9 @@ class ImageLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }else{
             headerImagesLikeHeightConstraint.constant = 64
         }
+        
+        imgUser.sd_setImage(with: URL(string: ((imageDict["images"] as! [String:AnyObject])["thumbnail"] as! [String:AnyObject])["url"] as! String), placeholderImage: #imageLiteral(resourceName: "icon-followers"))
+        lblLikes.text = String(describing: "You only have \((imageDict["likes"] as! [String:AnyObject])["count"]!) likes")
         
         countArray = ["10","25","50","100","250","500","1000","2000"]
         payAmountArray = ["$ 0.50","$ 0.75","$ 1.09","$ 2.99","$ 5.99","$ 9.99","15.99","$ 19.99"]
