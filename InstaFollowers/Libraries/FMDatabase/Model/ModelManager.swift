@@ -119,6 +119,23 @@ var database: FMDatabase? = nil
         sharedInstance.database?.beginTransaction()
         
         let querySQL = "delete FROM tbl_User"
+        
+//        var querySQL1 = "DELETE FROM Illustration_media where drill_id =('\(DrillId)')"
+        let  xx : Bool
+        xx =  sharedInstance.database!.executeUpdate(querySQL, withArgumentsIn: nil)
+        print("query : \(xx)")
+        
+        sharedInstance.database?.commit()
+        sharedInstance.database!.close()
+    }
+    
+    func deleteSingleUserData(_ userId:Int)
+    {
+        sharedInstance.database!.open()
+        sharedInstance.database?.beginTransaction()
+        
+        let querySQL = "DELETE FROM tbl_User where userId =('\(userId)')"
+        
         let  xx : Bool
         xx =  sharedInstance.database!.executeUpdate(querySQL, withArgumentsIn: nil)
         print("query : \(xx)")

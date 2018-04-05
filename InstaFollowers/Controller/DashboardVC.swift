@@ -39,6 +39,8 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
     @IBOutlet var imgUser: UIImageView!
     @IBOutlet var lblFollowers: UILabel!
     @IBOutlet var lblFollowing: UILabel!
+    @IBOutlet var lblNoPhotos: UILabel!
+    @IBOutlet var lblNoVideos: UILabel!
     @IBOutlet var imgLikes: UIImageView!
     @IBOutlet var imgViews: UIImageView!
     
@@ -89,6 +91,8 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         tblForFollowers.reloadData()
         collectionViewForLikes.reloadData()
         collectionViewForViews.reloadData()
+        lblNoPhotos.isHidden = true
+        lblNoVideos.isHidden = false
     }
     
     //MARK:- Collectionview Delegate
@@ -198,7 +202,15 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         imgFollowers.image = #imageLiteral(resourceName: "icon-followers")
         imgLikes.image = #imageLiteral(resourceName: "icon-likes")
         self.scrollView.setContentOffset(CGPoint(x: (UIScreen.main.bounds.size.width * 2), y: 0), animated: true)
-        self.collectionViewForViews.reloadData()
+        
+        if self.userVideoArray.count == 0 {
+            self.lblNoVideos.isHidden = false
+            self.collectionViewForViews.isHidden = true
+        }else{
+            self.lblNoVideos.isHidden = true
+            self.collectionViewForViews.isHidden = false
+            self.collectionViewForViews.reloadData()
+        }
     }
     
     @IBAction func btnBuyAction(_ sender: Any){
@@ -236,13 +248,29 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
                 for i in 0..<self.userMediaArray.count {
                     if self.userMediaArray[i]["type"] as! String == "video" {
                         self.userVideoArray.append(self.userMediaArray[i])
+                        
+                        
+                        
                     }else{
                         self.userPhotosArray.append(self.userMediaArray[i])
+                        if self.userPhotosArray.count == 0 {
+                            self.lblNoPhotos.isHidden = false
+                            self.collectionViewForLikes.isHidden = true
+                        }else{
+                            self.lblNoPhotos.isHidden = true
+                            self.collectionViewForLikes.isHidden = false
+                            self.collectionViewForLikes.reloadData()
+                        }
                     }
                 }
                 
-                self.collectionViewForLikes.reloadData()
                 
+                
+            }else{
+                self.lblNoPhotos.isHidden = false
+                self.lblNoVideos.isHidden = false
+                self.collectionViewForViews.isHidden = true
+                self.collectionViewForLikes.isHidden = true
             }
             
         }

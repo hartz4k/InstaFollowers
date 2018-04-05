@@ -33,17 +33,17 @@ class Util: NSObject {
             } catch let error1 as NSError {
                 error = error1
             }
-            let alert: UIAlertView = UIAlertView()
+//            let alert: UIAlertView = UIAlertView()
             if (error != nil) {
-                alert.title = "Error Occured"
-                alert.message = error?.localizedDescription
+//                alert.title = "Error Occured"
+//                alert.message = error?.localizedDescription
             } else {
-                alert.title = "Successfully Copy"
-                alert.message = "Your database copy successfully"
+//                alert.title = "Successfully Copy"
+//                alert.message = "Your database copy successfully"
             }
-            alert.delegate = nil
-            alert.addButton(withTitle: "Ok")
-            alert.show()
+//            alert.delegate = nil
+//            alert.addButton(withTitle: "Ok")
+//            alert.show()
         }
         
         

@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueExtras.ttc">
+            <string>HelveticaNeue-CondensedBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
@@ -330,6 +335,8 @@
                         <outlet property="imgViews" destination="Icb-QP-vyW" id="7lW-we-Rvi"/>
                         <outlet property="lblFollowers" destination="EJo-Ru-fJz" id="viA-Ak-Q5J"/>
                         <outlet property="lblFollowing" destination="yj5-mh-bbc" id="vEX-Xs-fPL"/>
+                        <outlet property="lblNoPhotos" destination="Wev-19-YK3" id="MSx-5y-EDe"/>
+                        <outlet property="lblNoVideos" destination="VsI-Pi-G0P" id="svR-Ya-ah6"/>
                         <outlet property="scrollView" destination="oWq-Z2-mAe" id="5WG-WS-xqo"/>
                         <outlet property="tblForFollowers" destination="5jJ-kc-htZ" id="2C9-7j-8a1"/>
                         <outlet property="viewAlertForBuy" destination="Wr0-wG-m6i" id="2sh-uP-hoC"/>
@@ -618,6 +625,12 @@
                                 <constraint firstAttribute="height" constant="84" id="rjc-cX-HCA"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't upload any photos before..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wev-19-YK3">
+                            <rect key="frame" x="30" y="289" width="315" height="20.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" red="0.91372549020000005" green="0.1176470588" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-xw-W3N">
                             <rect key="frame" x="0.0" y="84" width="375" height="513"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -682,9 +695,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="vc3-xw-W3N" firstAttribute="leading" secondItem="ALm-cI-d0e" secondAttribute="leading" id="03e-as-Oe7"/>
+                        <constraint firstItem="Wev-19-YK3" firstAttribute="centerX" secondItem="Srv-yr-eUp" secondAttribute="centerX" id="F7K-jd-tqQ"/>
                         <constraint firstItem="Tf1-qP-9U3" firstAttribute="trailing" secondItem="ALm-cI-d0e" secondAttribute="trailing" id="FuX-l4-tAJ"/>
                         <constraint firstItem="ALm-cI-d0e" firstAttribute="bottom" secondItem="vc3-xw-W3N" secondAttribute="bottom" id="S2o-xe-qb7"/>
+                        <constraint firstItem="Wev-19-YK3" firstAttribute="centerY" secondItem="Srv-yr-eUp" secondAttribute="centerY" id="Vgv-gm-yde"/>
                         <constraint firstItem="ALm-cI-d0e" firstAttribute="trailing" secondItem="vc3-xw-W3N" secondAttribute="trailing" id="d1d-nw-5J6"/>
+                        <constraint firstItem="ALm-cI-d0e" firstAttribute="trailing" secondItem="Wev-19-YK3" secondAttribute="trailing" constant="30" id="pAM-Dn-fOc"/>
+                        <constraint firstItem="Wev-19-YK3" firstAttribute="leading" secondItem="ALm-cI-d0e" secondAttribute="leading" constant="30" id="rOk-ac-DIC"/>
                         <constraint firstItem="Tf1-qP-9U3" firstAttribute="leading" secondItem="ALm-cI-d0e" secondAttribute="leading" id="uwJ-j1-sP6"/>
                         <constraint firstItem="vc3-xw-W3N" firstAttribute="top" secondItem="Tf1-qP-9U3" secondAttribute="bottom" id="yxM-1j-7td"/>
                         <constraint firstItem="Tf1-qP-9U3" firstAttribute="top" secondItem="Srv-yr-eUp" secondAttribute="top" id="zre-lz-ACc"/>
@@ -745,6 +762,12 @@
                                 <constraint firstItem="XR5-g5-gb8" firstAttribute="top" secondItem="STp-CY-rai" secondAttribute="top" id="zjh-zH-4A3"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't upload any video before..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VsI-Pi-G0P">
+                            <rect key="frame" x="30" y="288.5" width="315" height="20"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" red="0.91372549020000005" green="0.1176470588" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WEV-eh-5ho">
                             <rect key="frame" x="0.0" y="84" width="375" height="513"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -809,6 +832,10 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="STp-CY-rai" firstAttribute="trailing" secondItem="UyZ-1v-Qd6" secondAttribute="trailing" id="Hd0-sx-kW4"/>
+                        <constraint firstItem="VsI-Pi-G0P" firstAttribute="centerX" secondItem="EkT-L7-WG6" secondAttribute="centerX" id="JcJ-3W-pMn"/>
+                        <constraint firstItem="VsI-Pi-G0P" firstAttribute="leading" secondItem="UyZ-1v-Qd6" secondAttribute="leading" constant="30" id="KO3-uN-ehl"/>
+                        <constraint firstItem="UyZ-1v-Qd6" firstAttribute="trailing" secondItem="VsI-Pi-G0P" secondAttribute="trailing" constant="30" id="MqA-k2-dDI"/>
+                        <constraint firstItem="VsI-Pi-G0P" firstAttribute="centerY" secondItem="EkT-L7-WG6" secondAttribute="centerY" id="TfN-Zn-O4p"/>
                         <constraint firstItem="WEV-eh-5ho" firstAttribute="top" secondItem="STp-CY-rai" secondAttribute="bottom" id="YTh-fj-kE1"/>
                         <constraint firstItem="STp-CY-rai" firstAttribute="leading" secondItem="UyZ-1v-Qd6" secondAttribute="leading" id="dTt-Ui-yMq"/>
                         <constraint firstItem="WEV-eh-5ho" firstAttribute="leading" secondItem="UyZ-1v-Qd6" secondAttribute="leading" id="k90-ZZ-OWx"/>
@@ -1763,10 +1790,10 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vki-W5-uYH">
-                                                    <rect key="frame" x="265" y="1" width="40" height="40"/>
+                                                    <rect key="frame" x="275" y="6" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="BQb-8J-GDq"/>
-                                                        <constraint firstAttribute="width" constant="40" id="J6d-pL-kUv"/>
+                                                        <constraint firstAttribute="height" constant="30" id="BQb-8J-GDq"/>
+                                                        <constraint firstAttribute="width" constant="30" id="J6d-pL-kUv"/>
                                                     </constraints>
                                                     <state key="normal" image="close_icon"/>
                                                 </button>

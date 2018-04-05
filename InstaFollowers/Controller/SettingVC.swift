@@ -59,6 +59,17 @@ class SettingVC: PSViewController,UIWebViewDelegate,UITableViewDelegate,UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! settingCell
         cell.lblUserName.text = userArray[indexPath.row]["userName"] as? String
+        cell.btnDelete.tag = indexPath.row
+        if Int(String(describing: userArray[indexPath.row]["active"]!))! == 1 {
+            cell.btnDelete.setImage(#imageLiteral(resourceName: "ic_right"), for: .normal)
+            cell.btnDelete.isEnabled = false
+        }else{
+            cell.btnDelete.setImage(#imageLiteral(resourceName: "ic_close"), for: .normal)
+            cell.btnDelete.addTarget(self, action: #selector(self.btnDeleteAction(_:)), for: .touchUpInside)
+            cell.btnDelete.isEnabled = true
+        }
+        
+        
         return cell
     }
     
@@ -78,6 +89,25 @@ class SettingVC: PSViewController,UIWebViewDelegate,UITableViewDelegate,UITableV
     
     //MARK:- Action Methods
     //MARK:-
+    
+    @IBAction func btnDeleteAction(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: APP_NAME, message: "Are you sure you want to remove this account?", preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "YES", style: .default) { (alert) in
+            ModelManager.instance.deleteSingleUserData(Int(self.userArray[sender.tag]["userId"] as! String)!)
+            self.userArray = ModelManager.instance.getUserData()
+            self.tblSetting.reloadData()
+        }
+        alertController.addAction(defaultAction)
+        
+        let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
+        
+    }
     
     @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

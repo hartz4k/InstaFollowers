@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let APP_NAME = "SexyBeast"
+let APP_NAME = "InstaFollowers"
 
 let APP_DELEGATE = UIApplication.shared.delegate as! AppDelegate
 
