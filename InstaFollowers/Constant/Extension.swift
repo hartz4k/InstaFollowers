@@ -94,12 +94,14 @@ extension String
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
-    func getDateFromString() -> Date{
+    func getDateFromString(strDate:String) -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-mm-yyyy" //Your date format
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00") //Current time zone
-        let date = dateFormatter.date(from: self) //according to date format your date string
-        return date!
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" //Your date format
+        let date = dateFormatter.date(from: strDate)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00") //Current time zone
+        let datestr = dateFormatter.string(from: date!) //according to date format your date string
+        return datestr
     }
 }
 extension UITextField

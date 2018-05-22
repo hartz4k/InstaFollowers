@@ -9,10 +9,11 @@
 import UIKit
 import Alamofire
 
-let BasePath = "http://iappbits.in/"
+let BasePath = "http://foremostdigitalcloud.ca:4000/"
 
-let BaseAPIPathForAuction = BasePath + "Api/auction/"
-let BaseAPIPath = BasePath + "Api/Webservice/"
+let BaseUserRegister = BasePath + "user/register"
+let BaseStoreTransaction = BasePath + "payment/storeTransaction"
+let BaseShowTransaction = BasePath + "payment/showTransactions"
 let InstagramUserPath = INSTAGRAM_IDS.INSTAGRAM_APIURl
 
 protocol Routable
@@ -28,6 +29,9 @@ enum Router: Routable, CustomDebugStringConvertible
     
     case GetUserDetail()
     case GetUserPhotos()
+    case UserRegister(Parameters)
+    case storeTransaction(Parameters)
+    case showTransactions(Parameters)
     
 
     var debugDescription: String
@@ -57,6 +61,15 @@ extension Router
             
             case .GetUserPhotos:
                 return nil
+            
+            case .UserRegister:
+                    return nil
+            
+            case .storeTransaction:
+                return nil
+            
+            case .showTransactions:
+                return nil
         }
     }
 }
@@ -72,6 +85,15 @@ extension Router
             
             case .GetUserPhotos:
                 return "\(InstagramUserPath)\(String(describing: defaults.object(forKey: "user_id")!))/media/recent?access_token=\(String(describing: defaults.object(forKey: "authToken")!))"
+            
+            case .UserRegister:
+                return BaseUserRegister
+            
+            case .storeTransaction:
+                return BaseStoreTransaction
+            
+            case .showTransactions:
+                return BaseShowTransaction
         }
     }
 }
@@ -87,6 +109,15 @@ extension Router
             
             case .GetUserPhotos:
                 return .get
+            
+            case .UserRegister:
+                return .post
+            
+            case .storeTransaction:
+                return .post
+            
+            case .showTransactions:
+                return .post
         }
     }
 }
@@ -102,6 +133,15 @@ extension Router
             
             case .GetUserPhotos:
                 return nil
+            
+            case .UserRegister(let param):
+                return param
+            
+            case .storeTransaction(let param):
+                return param
+            
+            case .showTransactions(let param):
+                return param
         }
     }
 }

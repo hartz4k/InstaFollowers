@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 extension PSWebService
 {
@@ -65,6 +66,96 @@ extension PSWebService
                 
                 print("Error: \(error)")
                 completion([:])
+            }
+        }
+    }
+    
+    func UserRegisterAPI(_ parameter: [String:Any] ,completion:@escaping ([String:AnyObject]) -> Void)
+    {
+        self.sendRequest(.UserRegister(parameter)).responseJSON { response in
+            
+            switch response.result
+            {
+            case .success:
+                if let _ = response.result.value
+                {
+                    let data = response.data
+                    var dictonary = [String:AnyObject]()
+                    do {
+                        dictonary =  (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject])!
+                        completion(dictonary)
+                    } catch let error as NSError {
+                        print(error)
+                        completion(["Error":error.localizedDescription as AnyObject])
+                    }
+                    
+                    
+                }
+                
+            case .failure(let error):
+                
+                print("Error: \(error)")
+                completion(["Error":error.localizedDescription as AnyObject])
+            }
+        }
+    }
+    
+    func StoreTransactionAPI(_ parameter: [String:Any] ,completion:@escaping ([String:AnyObject]) -> Void)
+    {
+        self.sendRequest(.storeTransaction(parameter)).responseJSON { response in
+            
+            switch response.result
+            {
+            case .success:
+                if let _ = response.result.value
+                {
+                    let data = response.data
+                    var dictonary = [String:AnyObject]()
+                    do {
+                        dictonary =  (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject])!
+                        completion(dictonary)
+                    } catch let error as NSError {
+                        print(error)
+                        completion(["Error":error.localizedDescription as AnyObject])
+                    }
+                    
+                    
+                }
+                
+            case .failure(let error):
+                
+                print("Error: \(error)")
+                completion(["Error":error.localizedDescription as AnyObject])
+            }
+        }
+    }
+    
+    func ShowTransactionsAPI(_ parameter: [String:Any] ,completion:@escaping ([String:AnyObject]) -> Void)
+    {
+        self.sendRequest(.showTransactions(parameter)).responseJSON { response in
+            
+            switch response.result
+            {
+            case .success:
+                if let _ = response.result.value
+                {
+                    let data = response.data
+                    var dictonary = [String:AnyObject]()
+                    do {
+                        dictonary =  (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject])!
+                        completion(dictonary)
+                    } catch let error as NSError {
+                        print(error)
+                        completion(["Error":error.localizedDescription as AnyObject])
+                    }
+                    
+                    
+                }
+                
+            case .failure(let error):
+                
+                print("Error: \(error)")
+                completion(["Error":error.localizedDescription as AnyObject])
             }
         }
     }

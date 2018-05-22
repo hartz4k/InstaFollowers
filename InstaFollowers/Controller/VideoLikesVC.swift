@@ -15,6 +15,8 @@ class VideoLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var countArray : NSArray!
     var payAmountArray : NSArray!
     var videoDict = [String:AnyObject]()
+    var strAmount : String = ""
+    var strCount : String = ""
     
     //MARK:- IBOutlet
     //MARK:-
@@ -23,6 +25,7 @@ class VideoLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var viewAlertForBuy: UIView!
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var lblLikes: UILabel!
+    @IBOutlet var lblAlertText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +43,10 @@ class VideoLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         
         imgUser.sd_setImage(with: URL(string: ((videoDict["images"] as! [String:AnyObject])["thumbnail"] as! [String:AnyObject])["url"] as! String), placeholderImage: #imageLiteral(resourceName: "icon-followers"))
-        lblLikes.text = String(describing: "You only have \((videoDict["likes"] as! [String:AnyObject])["count"]!) likes")
+        lblLikes.text = String(describing: "You only have \((videoDict["likes"] as! [String:AnyObject])["count"]!) viwes on this video")
         
-        countArray = ["25","50","100","250","500","1000","2000"]
-        payAmountArray = ["$ 1.39","$ 2.99","$ 5.99","$ 8.99","$ 9.99","12.99","$ 16.99"]
+        countArray = ["10","25","50","100","250","500","1000","2000","5000"]
+        payAmountArray = ["0.49","0.99","1.49","1.99","3.99","6.99","12.99","16.99","24.99"]
         tblForVideoLikes.tableFooterView = UIView()
         tblForVideoLikes.reloadData()
         
@@ -61,9 +64,9 @@ class VideoLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! tableviewCell
-        cell.lblLike.text = "Get \(countArray[indexPath.row]) Likes"
-        cell.btnPayAmount.setTitle(payAmountArray[indexPath.row] as? String, for: .normal)
-        
+        cell.lblLike.text = "Get \(countArray[indexPath.row]) Views"
+        cell.btnPayAmount.setTitle("$ \(payAmountArray[indexPath.row] as! String)", for: .normal)
+        cell.btnPayAmount.tag = indexPath.row
         if countArray.count % 2 == 0{
             cell.backgroundColor = TABLEVIEW_CELL_BG_COLOR
         }else{
@@ -86,12 +89,32 @@ class VideoLikesVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func btnBuyAction(_ sender: Any){
+    @IBAction func btnBuyAction(_ sender: UIButton){
         viewAlertForBuy.isHidden = false
+        strAmount = payAmountArray[sender.tag] as! String
+        strCount = countArray[sender.tag] as! String
+        lblAlertText.text = "Are you sure you want to buy \(strCount) Views?"
+        
+        
     }
     
     @IBAction func btnNOAction(_ sender: Any){
         viewAlertForBuy.isHidden = true
     }
+    
+    @IBAction func btnYESAction(_ sender: Any){
+        viewAlertForBuy.isHidden = true
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
+        vc.strAmount = strAmount
+        vc.strPlanName = strCount + " Followers"
+        vc.strMediaLink = videoDict["link"] as! String
+        vc.strMediaType = videoDict["type"] as! String
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
+    //MARK:- Hide Status Bar
+    //MARK:-
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
 }

@@ -200,9 +200,36 @@ class SettingVC: PSViewController,UIWebViewDelegate,UITableViewDelegate,UITableV
         PSWebServiceAPI.GetUserDetailAPI { (response) in
             print(response)
             ModelManager.instance.updateActiveUser(Int(String(describing: defaults.object(forKey: "user_id")!))!)
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
-            vc.userDict = response
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            let param : [String:Any] = ["name" : response["data"]!["full_name"]! as Any,"instagram_id" : response["data"]!["id"]! as Any,"username" : response["data"]!["username"]! as Any] as [String:Any]
+            self.RegisterUser(parameter: param, userResponse: response)
+            
+            
+        }
+    }
+    
+    func RegisterUser(parameter : [String:Any],userResponse:[String:AnyObject]) {
+        showProgressHUD()
+        guard PSUtil.reachable() else
+        {
+            hideProgressHUD()
+            self.showAlertWithMessage(message: PSText.Key.NoIneternet)
+            return
+        }
+        PSWebServiceAPI.UserRegisterAPI(parameter) { (response) in
+            self.hideProgressHUD()
+            
+            if response["Error"] == nil {
+                if response["success"]!.boolValue {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+                    vc.userDict = userResponse
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    self.showAlertWithMessage(message: response["message"]! as! String)
+                }
+            }else{
+                self.showAlertWithMessage(message: response["Error"]! as! String)
+            }
         }
     }
     
@@ -242,6 +269,11 @@ class SettingVC: PSViewController,UIWebViewDelegate,UITableViewDelegate,UITableV
     
     @IBAction func btnCancelAction(_ sender: Any) {
         viewForLogin.isHidden = true
+    }
+    
+    @IBAction func btnOrderHistoryAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderHistoryVC") as! OrderHistoryVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK:- Hide Status Bar

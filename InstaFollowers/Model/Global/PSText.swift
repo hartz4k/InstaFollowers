@@ -43,7 +43,7 @@ struct PSText
     
     struct Key
     {
-        static let appName     = "BidLocal"
+        static let appName     = "InstaFollowers"
         static let appLanguage = "applanguage"
         static let appMessages = "appmessages"
         static let NoIneternet = "Please check Internet..!"

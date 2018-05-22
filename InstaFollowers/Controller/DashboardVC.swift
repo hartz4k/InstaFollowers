@@ -21,6 +21,8 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
     var userVideoArray = [[String:AnyObject]]()
     var userPhotosArray = [[String:AnyObject]]()
     var callAPIBoolen : Bool = false
+    var strAmount : String = ""
+    var strCount : String = ""
     
     //MARK:- IBOutlet
     //MARK:-
@@ -41,6 +43,7 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
     @IBOutlet var lblFollowing: UILabel!
     @IBOutlet var lblNoPhotos: UILabel!
     @IBOutlet var lblNoVideos: UILabel!
+    @IBOutlet var lblAlertText: UILabel!
     @IBOutlet var imgLikes: UIImageView!
     @IBOutlet var imgViews: UIImageView!
     
@@ -80,8 +83,8 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
     
     func doIntialization() {
         
-        countArray = ["5","20","50","100","250","500","1000"]
-        payAmountArray = ["$ 0.30","$ 1.39","$ 3.99","$ 6.99","$ 9.99","$ 14.99","$ 19.99"]
+        countArray = ["5","10","20","50","100","250","500","1000","2000","5000"]
+        payAmountArray = ["0.99","1.49","2.99","3.99","6.99","9.99","14.99","19.99","29.99","49.99"]
         
         imgFollowers.image = #imageLiteral(resourceName: "icon-selectedFollowers")
         imgUser.sd_setImage(with: URL(string: (userDict["data"] as! [String:AnyObject])["profile_picture"] as! String), placeholderImage: #imageLiteral(resourceName: "icon-followers"))
@@ -161,8 +164,8 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! tableviewCell
         cell.lblLike.text = "Get \(countArray[indexPath.row]) Followers"
-        cell.btnPayAmount.setTitle(payAmountArray[indexPath.row] as? String, for: .normal)
-        
+        cell.btnPayAmount.setTitle("$ \(payAmountArray[indexPath.row] as! String)", for: .normal)
+        cell.btnPayAmount.tag = indexPath.row
         if countArray.count % 2 == 0{
             cell.backgroundColor = TABLEVIEW_CELL_BG_COLOR
         }else{
@@ -213,12 +216,26 @@ class DashboardVC: PSViewController,UICollectionViewDelegate,UICollectionViewDat
         }
     }
     
-    @IBAction func btnBuyAction(_ sender: Any){
+    @IBAction func btnBuyAction(_ sender: UIButton){
         viewAlertForBuy.isHidden = false
+        
+        strAmount = payAmountArray[sender.tag] as! String
+        strCount = countArray[sender.tag] as! String
+        lblAlertText.text = "Are you sure you want to buy \(strCount) followers?"
     }
     
     @IBAction func btnNOAction(_ sender: Any){
         viewAlertForBuy.isHidden = true
+    }
+    
+    @IBAction func btnYESAction(_ sender: Any){
+        viewAlertForBuy.isHidden = true
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
+        vc.strAmount = strAmount
+        vc.strPlanName = strCount + " Followers"
+        vc.strMediaLink = ""
+        vc.strMediaType = "followers"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func btnSettingAction(_ sender: Any) {

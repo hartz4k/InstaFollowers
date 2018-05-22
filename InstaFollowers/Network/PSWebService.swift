@@ -14,7 +14,7 @@ let PSWebServiceAPI: PSWebService = PSWebService.APIClient
  
 class PSWebService: SessionManager
 {
-    var header = ["Content-Type" : "application/x-www-form-urlencoded"]
+    var header = ["Content-Type" : "application/json"]
     
     static let APIClient: PSWebService =
     {
@@ -25,40 +25,14 @@ class PSWebService: SessionManager
         return PSWebService(configuration: configuration)
     }()
     
-    func set(authorizeToken token: String?)
-    {
-        header[PSAPI.accessToken] = "Bearer "+token!
-    }
-    
-    func removeAuthorizeToken()
-    {
-        header.removeValue(forKey: PSAPI.accessToken)
-    }
-    
     func sendRequest(_ route: Router)
         -> DataRequest
     {
         let path = route.path.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
             
-        var encoding: ParameterEncoding = JSONEncoding.default
- 
-        var parameter = route.parameters
+        let encoding: ParameterEncoding = JSONEncoding.default
         
-        if(route.method == .post)
-        {
-            encoding = URLEncoding.default
-            
-            var json : NSData = NSData()
-            var jsonString: String
-            json = try! JSONSerialization.data(withJSONObject: route.parameters!, options: JSONSerialization.WritingOptions(rawValue: 0)) as NSData
-            print(json)
-            
-            jsonString = NSString(data: json as Data, encoding: UInt(String.Encoding.utf8.hashValue))! as String
-            
-            parameter = [route.keys! : jsonString] as [String : Any]
-        }
-        
-        return self.request(path!, method: route.method, parameters: parameter, encoding: encoding, headers: header)
+        return self.request(path!, method: route.method, parameters: route.parameters, encoding: encoding, headers: header)
     }
 }
 

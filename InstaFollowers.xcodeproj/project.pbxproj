@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0412A3AF205ACD6F00C1B14F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412A3AE205ACD6F00C1B14F /* Constant.swift */; };
 		0412A3B1205ADF4F00C1B14F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412A3B0205ADF4E00C1B14F /* Extension.swift */; };
+		041727BA2084F7BA00E2E641 /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041727B92084F7B900E2E641 /* PaymentVC.swift */; };
+		041727BC2085210F00E2E641 /* OrderHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041727BB2085210F00E2E641 /* OrderHistoryVC.swift */; };
 		042A81E62073F73B00DAC9C2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81D62073F73B00DAC9C2 /* FMDatabase.m */; };
 		042A81E72073F73B00DAC9C2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81D82073F73B00DAC9C2 /* FMDatabaseAdditions.m */; };
 		042A81E82073F73B00DAC9C2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A81DA2073F73B00DAC9C2 /* FMDatabasePool.m */; };
@@ -63,6 +65,8 @@
 /* Begin PBXFileReference section */
 		0412A3AE205ACD6F00C1B14F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0412A3B0205ADF4E00C1B14F /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		041727B92084F7B900E2E641 /* PaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
+		041727BB2085210F00E2E641 /* OrderHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryVC.swift; sourceTree = "<group>"; };
 		042A81D52073F73B00DAC9C2 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		042A81D62073F73B00DAC9C2 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		042A81D72073F73B00DAC9C2 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				04F9625C205E2D2100004CFC /* ImageLikesVC.swift */,
 				04F9625E205E7C4000004CFC /* VideoLikesVC.swift */,
 				04F96260205E861B00004CFC /* SettingVC.swift */,
+				041727B92084F7B900E2E641 /* PaymentVC.swift */,
+				041727BB2085210F00E2E641 /* OrderHistoryVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -552,6 +559,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,6 +640,7 @@
 				04BCB955205A1CEF00760B20 /* AppDelegate.swift in Sources */,
 				042A81E72073F73B00DAC9C2 /* FMDatabaseAdditions.m in Sources */,
 				0412A3AF205ACD6F00C1B14F /* Constant.swift in Sources */,
+				041727BC2085210F00E2E641 /* OrderHistoryVC.swift in Sources */,
 				04F711C8206D549500503C82 /* Router.swift in Sources */,
 				04F9625F205E7C4000004CFC /* VideoLikesVC.swift in Sources */,
 				04FDB9FC206D55C200DD8966 /* PSText.swift in Sources */,
@@ -643,6 +652,7 @@
 				042A81EE2073F73B00DAC9C2 /* Util.swift in Sources */,
 				042A81EB2073F73B00DAC9C2 /* FMResultSet.m in Sources */,
 				042A81E82073F73B00DAC9C2 /* FMDatabasePool.m in Sources */,
+				041727BA2084F7BA00E2E641 /* PaymentVC.swift in Sources */,
 				04F711C7206D549500503C82 /* PSWebService.swift in Sources */,
 				042A81EC2073F73B00DAC9C2 /* ModelManager.swift in Sources */,
 				04F96259205D5CCF00004CFC /* LoginVC.swift in Sources */,

@@ -9,6 +9,7 @@ target 'InstaFollowers' do
 	pod 'SwiftyJSON'
 	pod 'SVProgressHUD'
     pod 'SDWebImage'
+    pod 'Stripe'
 
   target 'InstaFollowersTests' do
     inherit! :search_paths
