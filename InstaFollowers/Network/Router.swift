@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+//https://graph.facebook.com/v3.2/search?access_token=EAAeGd4F6lFUBABB19LCDlGLsEjVjCRCeZAYXVPzJaeQbp2QUPlDQVP2DJrkfbCK7SCcCBhp08wYy2svnamhpsn17U0O5XWmdhA34MBLcLjz1A4TWb4L7e1FDvpZAdSw99efDbhXw4TdgY3ZBQ26HrP4MjcPeylOWemQXIj6RlTBeQvzPxdt3iTl5QO7oRC5LNZBWttbxZAUpRWPj4kYuE5pnfTpw8BLgaM3vZBP0NQ2gZDZD&type=place&center=23.025790,72.587270&distance=50&limit=25
 let BasePath = "http://foremostdigitalcloud.ca:4000/"
 
 let BaseUserRegister = BasePath + "user/register"
